@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mo ta den pin</title>
+</head>
+<body>
+<button onclick="on()">turn on</button>
+<button onclick="off()">turn off</button>
+<p id="trangThaiPin"></p>
+<script>
+   class Battery {
+       constructor() {
+           this.energy = 10;
+       }
+       getEnergy() {
+           return this.energy;
+       }
+       decreaseEnergy () {
+           if (this.energy>0) {
+               this.energy--
+           }
+       }
+   }
+
+   class Flashlamp {
+       constructor() {
+           this.status = true;
+       }
+       setBattery (pin) {
+           return pin.getEnergy()
+       }
+       turnOn () {
+           this.status = true;
+       }
+       turnOff () {
+           this.status = false;
+       }
+       light () {
+           if (this.status ==true) {
+               alert('den bat')
+           } else {
+               alert('den tat')
+           }
+       }
+   }
+
+   let pin = new Battery();
+   let den = new Flashlamp();
+
+   function on() {
+       den.turnOn();
+       den.light();
+       pin.decreaseEnergy()
+       document.getElementById('trangThaiPin').innerHTML = den.setBattery(pin);
+   }
+
+   function off() {
+       den.turnOff();
+       den.light();
+       document.getElementById('trangThaiPin').innerHTML = den.setBattery(pin);
+   }
+
+
+
+</script>
+</body>
+</html>
